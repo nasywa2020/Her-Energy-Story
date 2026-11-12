@@ -341,7 +341,7 @@ function choose(sc,used){
   b.innerHTML="<b>"+esc(c.t)+"</b><small style=\"margin:3px 0 0\">"+esc(c.d)+"</small>";
   b.onclick=function(){box.remove();used[ix]=1;
    for(var k in c.fx)S.st[k]+=c.fx[k];if(c.flag)S.f[c.flag]=1;hud(c.fx);
-   REC.push({d:sc.d,p:sc.p,t:c.t});chime();row({hari:sc.d,jam:sc.t,tempat:sc.p,pilihan:c.t});
+   REC.push({d:sc.d,p:sc.p,t:c.t});chime();
    put(mk("row me",'<div class="ph">'+av("Rani",38)+'</div><div class="bb">'+esc(c.t)+'</div>'));por("Rani");
    play((sc.re&&sc.re[ix]||[]).concat([["Narator",c.d]]),function(){
     if(!sc.multi)return next();
@@ -358,7 +358,14 @@ function finish(){clearP();theme(1);sky("dawn");var ix=endIdx(),e=END[ix],s=S.st
  var ds=SHEET_URL?'<p id="ds" style="font-size:12px;opacity:.75">Mengirim data…</p>':"";
  var H=('<div class="hr">Horee! perjalananmu telah selesai 🎉</div><small class="pr">Profil perjalananmu adalah:</small><h2>'+e+'</h2><p class="ed">'+ED[ix]+'</p><p>Selama tujuh hari, Rani belajar bahwa apa yang kita alami dari sebuah teknologi dipengaruhi oleh waktu, pekerjaan, informasi yang kita punya, teman-teman, kesempatan bicara, dan kesempatan ikut memutuskan.</p><div class="pf">'+bar("Pengetahuan",s.PENGETAHUAN)+bar("Jejaring",s.JEJARING)+bar("Suara",s.SUARA)+bar("Agency",s.AGENCY)+bar("Waktu tersisa",s.WAKTU)+bar("Energi tersisa",s.ENERGI)+'<div class="pt">Power Map: proses pemberdayaanmu</div><div class="pm">'+pm+'</div><p class="pc">Tanda ✓ menunjukkan tahap yang sudah kamu capai.</p></div><div class="pf"><b>Rekap pilihanmu</b><ol class="rc">'+rc+'</ol></div><div class="pf"><b>Refleksi</b><p>Coba lihat kembali: apakah pengetahuan yang Ibu dapat berubah menjadi keberanian bersuara dan bertindak? Pilihan yang berbeda bisa membawa cerita yang berbeda.</p><p style="font-size:12px;opacity:.7">Prototipe ini dapat dikembangkan sebagai media pembelajaran atau desain penelitian dengan pengukuran terpisah sebelum dan sesudah permainan.</p>'+ds+'<button class="go" onclick="location.reload()">Main Lagi</button></div>');pageBtn(H);
  tone(523,0,.3);tone(659,.15,.3);tone(784,.3,.5);
- row({hari:"AKHIR",hasil_akhir:e})}
+ row({
+  hari:"1-7",
+  tempat:"Seluruh permainan",
+  pilihan:REC.map(function(r){
+    return "Hari "+r.d+" ("+r.p+"): "+r.t;
+  }).join(" | "),
+  hasil_akhir:e
+});
 (function(){function g(){document.removeEventListener("pointerdown",g,true);document.removeEventListener("keydown",g,true);try{if(SND){ac();if(!AMB)amb("bird")}}catch(e){}}document.addEventListener("pointerdown",g,true);document.addEventListener("keydown",g,true)})();
 start();
 </script><div id="page2"></div></body></html>
